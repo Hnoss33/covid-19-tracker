@@ -12,7 +12,7 @@ function App() {
       <h1>COVID-19 Tracker</h1>
 <FormControl className="app__dropdown">
   <Select variant="outlined" value="abc">
-    <MenuItem value="worldwide">WorldWide</MenuItem>
+    <MenuItem value="worldwide">Wor</MenuItem>
     <MenuItem value="worldwide">WorldWide</MenuItem>
     <MenuItem value="worldwide">WorldWide</MenuItem>
     <MenuItem value="worldwide">WorldWide</MenuItem>
