@@ -2,6 +2,13 @@
   margin: 0;
 }
 
+body {
+  background-color: #f5f6fa ;
+}
+.app {
+display: flex;
+justify-content: space-evenly; 
+}
 .app__header{
 display: flex;
 /* flex-direction: column; */
@@ -10,3 +17,17 @@ align-items: center;
 margin-bottom: 20px;
 
 }
+.app__left { 
+  flex: 0.9; /* this one shows everything i mean , (left component so the app is the father)so this one is gona take the 90% of the screen  */
+}
+.app__stats {
+  display: flex;
+  justify-content: space-between;
+}
+/* estos son los mediaqueris para mobile */
+@media (max-width: 990px) {
+  .app {
+    flex-direction: column;
+  }
+}
+
