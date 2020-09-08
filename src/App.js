@@ -10,6 +10,8 @@ import {
 import Table from './Table';
 import Map from './Map';
 import InfoBox from './InfoBox';
+import {sortData} from './util'
+import LineGraph from './LineGraph';
 
 //leer documentacion de los hooks en REACT usamos useState y el useEffect
 // State = How to write a variable in REACT 
@@ -41,7 +43,8 @@ const [tableData, setTableData] = useState([]);
                 name: country.country,
                 value: country.countryInfo.iso2, 
           }));
-          setTableData(data);
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries)
         });
       
@@ -113,6 +116,7 @@ const [tableData, setTableData] = useState([]);
           <h3>Live Cases by Country</h3>
           <Table countries={tableData}/>
           <h3>Worldwide new cases</h3>
+          <LineGraph/>
         </CardContent>
       </Card>
     </div>
