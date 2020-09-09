@@ -132,18 +132,18 @@ const [casesType, setCasesType] =useState("cases"); // onclick!
           zoom={mapZoom}
         />
       </div>
-      <Card className="app__right">
+      <Card className="app__right"> 
         <CardContent>
-          <div className="app__information">
-            <h3>Live Cases by Country</h3>
+            <h3>Live Cases by Country ☣︎ </h3>
+          
             <Table countries={tableData} />
-            <h3>Worldwide new {casesType}</h3>
-            <LineGraph casesType={casesType} />
-          </div>
+            <h3 className="app__graphTitle">Worldwide new ☣︎ {casesType}</h3>
+            <LineGraph className="app__graph" casesType={casesType} />
+         
         </CardContent>
       </Card>
     </div>
   );
 };
-
+//<Card className="app__right">  si colocamos este classname significa que debemos crear el ...props en la funcion dentro de Linegraph para poder modificar el css de esta CARD
 export default App;

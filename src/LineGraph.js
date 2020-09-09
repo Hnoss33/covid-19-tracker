@@ -67,7 +67,7 @@ const options = {
     return chartData;
   };
 
-function LineGraph({ casesType }) {
+function LineGraph({ casesType, ...props}) {
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -88,9 +88,9 @@ function LineGraph({ casesType }) {
   }, [casesType]);
 
     //{data?.length > 0 && ( this verify if data exist insted of put data && data we will put data?
+    //<div className={props.className}> al pasar esto y crear ...props en la funcion hacemos un atach a la className
     return (
-        <div>
-            <h1>☠︎</h1>
+        <div className={props.className}>
             {data?.length > 0 && (
         <Line
           data={{
@@ -112,4 +112,4 @@ function LineGraph({ casesType }) {
 export default LineGraph
 
 
-//en este componente hacemos el fetch de DATA usuando useState osea que lo hace by himself
+//en este componente hacemos el fetch de DATA usuando useState osea que lo hace by himself <h1>☠︎</h1>
