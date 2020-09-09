@@ -4,6 +4,7 @@ import numeral from "numeral";
 //para esta grafica debemos instalar el desde npm  {https://github.com/jerairrest/react-chartjs-2}
 //con useState hacemos el fetch de Covid-19 API trayendo los historicos que necesitamos, la documentacion la encontramos en la api Json
 //https://disease.sh/v3/covid-19/historical/all?lastdays=120
+//we have to instal the package numeral to handel the information on the graph : {http://numeraljs.com/}
 const options = {
     legend: {
       display: false,
@@ -50,59 +51,62 @@ const options = {
   };
   
   
-  const buildChartData = (data, casesTypes) => {
+  const buildChartData = (data, casesType) => {
     let chartData = [];
     let lastDataPoint;
     for (let date in data.cases) {
-        if(lastDataPoint) {
-            let newDataPoint = {
-                x: date,
-                y: data[casesTypes][date] - lastDataPoint,
-            };
-            chartData.push(newDataPoint);
-        }
-        lastDataPoint = data[casesTypes][date];
+      if (lastDataPoint) {
+        let newDataPoint = {
+          x: date,
+          y: data[casesType][date] - lastDataPoint,
+        };
+        chartData.push(newDataPoint);
+      }
+      lastDataPoint = data[casesType][date];
     }
     return chartData;
-}
+  };
 
-function LineGraph({casesType = "case"}) {
-    const [data, setData] = useState({});
-    useEffect(() => {
-        const fetchData = async () => {
-          await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => {
-              let chartData = buildChartData(data, "cases");
-              setData(chartData);
-              
-            });
-        };
-    
-        fetchData();
-      }, [casesType]);
+function LineGraph({ casesType }) {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          let chartData = buildChartData(data, casesType);
+          setData(chartData);
+          console.log(chartData);
+          // buildChart(chartData);
+        });
+    };
+
+    fetchData();
+  }, [casesType]);
 
     //{data?.length > 0 && ( this verify if data exist insted of put data && data we will put data?
     return (
         <div>
             <h1>☠︎</h1>
             {data?.length > 0 && (
-                <Line 
-                options={options}
-                data={{
-                    datasets: [
-                    {
-                        backgroundColor: "rgba(95,15,64,0.3)",
-                        borderColor: "rgba(95,15,64,1)",
-                        data: data
-                    }
-                ]
-                }}/>
-            )}
-        </div>
-    )
+        <Line
+          data={{
+            datasets: [
+              {
+                backgroundColor: "rgba(204, 16, 52, 0.5)",
+                borderColor: "#CC1034",
+                data: data,
+              },
+            ],
+          }}
+          options={options}
+        />
+      )}
+    </div>
+  );
 }
 
 export default LineGraph
