@@ -5,7 +5,7 @@ import './InfoBox.css'
 //IMPORTANTE! => ESTE {...props} nos da la opcion de clickear con onclick la caja colocando {onClick={props.onClick}} en la CARD
 const useStyles = makeStyles({
   root: {
-    backgroundColor: '#EAEBC7',
+    backgroundColor: '#ECEDD5',
   },
   });
   

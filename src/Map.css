@@ -1,10 +1,10 @@
 .map {
   height: 500px;
-  background-color: #EAEBC7;
+  background-color: #ECEDD5;
   padding: 0.7rem;
   border-radius: 5px;
   margin-top: 16px;
-  box-shadow: 0 0 8px -4px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 8px -4px rgb(255, 255, 255);
 }
 
 .map .leaflet-container {

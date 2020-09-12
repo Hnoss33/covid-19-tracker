@@ -3,6 +3,11 @@ import './App.css';
 import {
   Card,
   CardContent,
+  InputLabel,
+  MenuItem,
+  Select,
+  FormControl,
+  makeStyles
 } from "@material-ui/core";
 import Table from './Table';
 import Map from './Map';
@@ -11,13 +16,7 @@ import {sortData, prettyPrintStat} from './util'
 import LineGraph from './LineGraph';
 import "leaflet/dist/leaflet.css";
 import numeral from "numeral";
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
 import Logo from "./Resourses/Component 25 – 1.png"
-
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -28,9 +27,13 @@ const useStyles = makeStyles((theme) => {
     formControl: {
       margin: theme.spacing(1),
       minWidth: 120
-    }
+    },
+    root: {
+      backgroundColor: '#ffffff',
+      },
   };
 });
+
 //leer documentacion de los hooks en REACT usamos useState y el useEffect
 // State = How to write a variable in REACT 
 //https://disease.sh/v3/covid-19/countries
@@ -49,15 +52,8 @@ const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
 const [mapZoom, setMapZoom] = useState(3);
 const [mapCountries, setMapCountries] = useState([]);
 const [casesType, setCasesType] = useState("cases"); // onclick!
-const [open, setOpen] = useState(false);
 
-const handleClose = () => {
-  setOpen(false);
-};
 
-const handleOpen = () => {
-  setOpen(true);
-};
 
   useEffect(() => {
       fetch("https://disease.sh/v3/covid-19/all")
@@ -105,24 +101,22 @@ const handleOpen = () => {
 
     });
   };
-  
-   
+  const styles = useStyles();
   return (
     <div className="app">
-          <div className="app__left">
+      <div className="app__left">
         <div className="app__header">
         <img className="login_logo"src={Logo}alt=""/>
           
-          <FormControl className={classes.formControl}>
-          <InputLabel id="controlled-open-select-label">Worldwide</InputLabel>
+          <FormControl variant="filled" className={`${styles.root} ${classes.formControl}`} error >
+          <InputLabel id="controlled-open-select-label">Countries</InputLabel>
           <Select id="controlled-open-select"
-              open={open}
-              onClose={handleClose}
-              onOpen={handleOpen}
+              label="Worldwide"
               onChange={onCountryChange} 
               value={country}
+              renderValue={(value) => `☠︎ - ${value}`}
                >
-                <MenuItem value="worldwide"><h2>☠︎</h2></MenuItem>
+                <MenuItem value="worldwide"></MenuItem>
                 {countries.map((country) => (
                 <MenuItem value={country.value}>{country.name}</MenuItem>
                 ))}
@@ -130,7 +124,7 @@ const handleOpen = () => {
             </FormControl>
         </div>
           
-        <div className="app__stats">
+          <div className="app__stats">
               <InfoBox
                 onClick={(e) => setCasesType("cases")}
                 title="Coronavirus Cases"
@@ -154,16 +148,16 @@ const handleOpen = () => {
                 cases={prettyPrintStat(countryInfo.todayDeaths)}
                 total={numeral(countryInfo.deaths).format("0.0a")}
               />
-            </div>
+          </div>
           
-            <Map
+            <Map id="mapa"
               countries={mapCountries}
               casesType={casesType}
               center={mapCenter}
               zoom={mapZoom}
             />
-          </div>
-          <Card className="app__right"> 
+        </div>
+          <Card className= {`${styles.root} ${"app__right"}`} > 
             <CardContent className="app__information">
                 <h3>Live Cases by Country ☣︎ </h3>
                 <Table countries={tableData} />
@@ -172,7 +166,7 @@ const handleOpen = () => {
             
             </CardContent>
           </Card>
-    </div>
+</div>
   );
 };
 

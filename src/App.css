@@ -13,7 +13,9 @@ body {
   padding: 20px;
 }
 
-
+.app__header .MuiInputBase-root {
+  color: #443838;
+}
 .app__header {
   display: flex;
   align-items: center;
@@ -40,6 +42,8 @@ object-fit: contain;
 .app__right{
   display: flex;
   flex-direction: column;
+  background-color: #c7ac93;
+
 }
 .app__right .MuiCardContent-root {
   display: flex;
@@ -56,9 +60,8 @@ object-fit: contain;
   margin-bottom: 20px;
 }
 
-
 .app__information > h3 {
-  color: #6a5d5d;
+  color: #443838;
   font-weight: 400;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
