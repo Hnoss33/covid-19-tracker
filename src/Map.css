@@ -1,37 +1,41 @@
 .map {
   height: 500px;
-  background-color: white;
-  padding: 1rem;
-  border-radius: 20px;
+  background-color: #EAEBC7;
+  padding: 0.7rem;
+  border-radius: 5px;
   margin-top: 16px;
-  box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px -4px rgba(255, 255, 255, 0.5);
 }
 
 .map .leaflet-container {
   height: 100%;
-  border-radius: 12px;
+  border-radius: 3px;
+  
 }
 
 .info-flag img {
   width: 100px;
   border-radius: 5px;
+  
 }
 
 .info-name {
   font-size: 20px;
   font-weight: bold;
-  color: #555;
+  color: #5a5151;
 }
 
 .info-container {
   width: 150px;
+  
 }
 
 .info-flag {
   height: 80px;
   width: 100%;
   background-size: cover;
-  border-radius: 8px;
+  border-radius: 3px;
+  
 }
 
 .info-confirmed,
@@ -39,4 +43,5 @@
 .info-deaths {
   font-size: 16px;
   margin-top: 5px;
+  
 }

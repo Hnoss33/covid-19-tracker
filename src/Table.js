@@ -5,8 +5,7 @@ import numeral from "numeral";
 //numeral formatea la cantidad y adapta a numeros con comas
 function Table({ countries }) {
   return (
-    <div className="table">
-      {countries.map((country) => (
+    <div className="table"> {countries.map((country) => (
         <tr>
           <td>{country.country}</td>
           <td>

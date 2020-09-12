@@ -1,19 +1,22 @@
 import React from 'react'
-import { Card, CardContent, Typography } from "@material-ui/core";
+import { Card, CardContent, Typography, makeStyles } from "@material-ui/core";
 import './InfoBox.css'
 //mirar las cartas en materialUI
 //IMPORTANTE! => ESTE {...props} nos da la opcion de clickear con onclick la caja colocando {onClick={props.onClick}} en la CARD
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: '#EAEBC7',
+  },
+  });
+  
 function InfoBox({ title, cases, total, active, isRed, ...props }) {
-    console.log(title, active);
+  const classes = useStyles();
     return (
       <Card
-        onClick={props.onClick}//con el ...props funciona el click
-        className={`infoBox ${active && "infoBox--selected"} ${
-          isRed && "infoBox--red"
-        }`}
-      >
+        className= {`infoBox ${active && "infoBox--selected"} ${classes.root} ${isRed && "infoBox--red"}`}
+        onClick={props.onClick}>
         <CardContent>
-          <Typography color="textSecondary" gutterBottom>
+          <Typography className="infoBox__title" color="textSecondary" gutterBottom>
             {title}
           </Typography>
           <h2 className={`infoBox__cases ${!isRed && "infoBox__cases--green"}`}>

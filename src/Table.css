@@ -1,8 +1,8 @@
 .table {
     margin-top: 20px;
     overflow: scroll;
-    color: #6a5d5d;
-    background-color: white;
+    color: #5a5151;
+    background-color: #c7ac93;
     height: 400px;
   }
   
@@ -17,5 +17,11 @@
   }
   
   .table tr:nth-of-type(odd) {
-    background-color: #f3f2f8;
+    background-color: #f7efe8;
+  }
+
+  @media (max-width: 990px) {
+    .app {
+      flex-direction: column;
+    }
   }
