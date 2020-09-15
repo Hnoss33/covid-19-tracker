@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => {
 function App() {  
 const classes = useStyles();
 const [countries, setCountries] = useState([]); //este es el HOOK 'useState'
-const [country, setCountry] = useState('worldwide');
+const [country, setCountry] = useState('WorldWide');
 const [countryInfo, setCountryInfo, ] = useState({})
 const [tableData, setTableData] = useState([]);
 const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
@@ -90,7 +90,7 @@ const [casesType, setCasesType] = useState("cases"); // onclick!
     
 //DESDE ACA HACEMOS EL FETCH DESDE LA API CON INFORMACION ESPEcIFICA
     
-    const url = countryCode === "worldwide" ? "https://disease.sh/v3/covid-19/all" : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+    const url = countryCode === "WorldWide" ? "https://disease.sh/v3/covid-19/all" : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
     await fetch(url)
     .then((response) => response.json())
     .then((data) => {
@@ -111,12 +111,12 @@ const [casesType, setCasesType] = useState("cases"); // onclick!
           <FormControl variant="filled" className={`${styles.root} ${classes.formControl}`} error >
           <InputLabel id="controlled-open-select-label">Countries</InputLabel>
           <Select id="controlled-open-select"
-              label="Worldwide"
+              label="WorldWide"
               onChange={onCountryChange} 
               value={country}
               renderValue={(value) => `☠︎ - ${value}`}
                >
-                <MenuItem value="worldwide"></MenuItem>
+                <MenuItem value="WorldWide"></MenuItem>
                 {countries.map((country) => (
                 <MenuItem value={country.value}>{country.name}</MenuItem>
                 ))}
@@ -161,7 +161,7 @@ const [casesType, setCasesType] = useState("cases"); // onclick!
             <CardContent className="app__information">
                 <h3>Live Cases by Country ☣︎ </h3>
                 <Table countries={tableData} />
-                <h3 className="app__graphTitle">Worldwide new {casesType} ☣︎</h3>
+                <h3 className="app__graphTitle">WorldWide new {casesType} ☣︎</h3>
                 <LineGraph className="app__graph" casesType={casesType} />
             
             </CardContent>
