@@ -14,7 +14,7 @@ body {
 }
 
 .app__header .MuiInputBase-root {
-  color: #443838;
+  color: #211819;
 }
 .app__header {
   display: flex;
@@ -34,35 +34,37 @@ object-fit: contain;
   display: flex;
   justify-content: space-between;
 }
-
+.app__graph{
+  flex-grow: 1;
+}
 .app__left {
-  flex: 0.9;
+  flex: 3;
+  margin: 10px;
 }
 
 .app__right{
+  flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #c7ac93;
-
+  margin: 10px;
 }
+
 .app__right .MuiCardContent-root {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  background-color: #FEF8EE
   }
 
-.app__graph{
-  flex-grow: 1;
-}
+
 
 .app__graphTitle {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 .app__information > h3 {
-  color: #443838;
-  font-weight: 400;
+  color: #211819;
+  font-weight: 600;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
@@ -72,7 +74,7 @@ object-fit: contain;
   margin-bottom: 1rem;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1280px) {
   .app {
     flex-direction: column;
   }

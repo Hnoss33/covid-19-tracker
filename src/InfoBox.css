@@ -28,14 +28,14 @@
 }
 
 .infoBox__total {
-  color: #6a5d5d;
+  color: #211819 !important;
   font-weight: 700 !important;
   font-size: 1rem !important;
   margin-top: 15px !important;
   text-align: center;
 }
 .infoBox__title {
-  color: #6a5d5d !important;
+  color: #211819 !important;
   font-weight: 700 !important;
   font-size: 1.2rem !important;
   text-align: center;
